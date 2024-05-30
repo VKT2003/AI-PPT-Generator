@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-wB3BFcUIvrZW65DlfMjmJLb8fs3ZbYzpb+r6Yc8yKojF1LyF5fQPyHvp9Slpfg8a" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/aja~x/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+    <!-- custom JS file -->
+    <script src="{{ url_for('static', filename='JS/main.js') }}"></script>
+
+    <!-- Typed js -->
+    <script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js@latest/lib/typed.min.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {% if title %}
+    <title>PP Generators - {{ title }}</title>
+    {% else %}
+    <title>PP Generators</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-collapse-md navbar-expand-md navbar-dark bg-steel">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">
+                    <img id="main-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                    PowerPoint Generators
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav ms-auto"> <!-- Use ms-auto to align items to the right -->
+                        {% if current_user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{{ url_for('profile') }}">Profile</a>
+                        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                        <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer class="footer">
+        <!-- Footer -->
+        <footer class="text-center">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Youtube -->
+                    <a data-mdb-ripple-init class="btn bg-light btn-outline btn-floating m-1" href="https://www.youtube.com/channel/UC3PaBnmCwSDWkQS8QbbndCA" role="button" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
+
+                    <!-- Instagram -->
+                    <a data-mdb-ripple-init class="btn bg-light btn-outline btn-floating m-1" href="https://www.instagram.com/harshtiwari2108/" role="button" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+
+                    <!-- Linkedin -->
+                    <a data-mdb-ripple-init class="btn bg-light btn-outline btn-floating m-1" href="https://www.linkedin.com/in/harsh-tiwari-745a85274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" role="button" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+
+                    <!-- Github -->
+                    <a data-mdb-ripple-init class="btn bg-light btn-outline btn-floating m-1" href="https://github.com/harsh21082004" role="button" target="_blank"><i
+                            class="fab fa-github"></i></a>
+                </section>
+                <!-- Section: Social media -->
+
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center">
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <p class="pt-2">
+                                    <strong>Sign up for our newsletter</strong>
+                                </p>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-md-5 col-12">
+                                <!-- Email input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="email" id="form5Example24" class="form-control" />
+                                    <label class="form-label" for="form5Example24">Email address</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <!-- Submit button -->
+                                <button data-mdb-ripple-init type="submit" class="btn btn-outline mb-4">
+                                    Subscribe
+                                </button>
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+                    </form>
+                </section>
+                <!-- Section: Form -->
+
+                <!-- Section: Text -->
+                <section class="mb-4">
+                    <p>
+                        We think that you have enjoyed our services.
+                    </p>
+                </section>
+                <!-- Section: Text -->
+
+                <!-- Section: Links -->
+                <section class="text-center">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Links</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li class="p-1">
+                                    <a class="text-light" href="https://www.youtube.com/channel/UC3PaBnmCwSDWkQS8QbbndCA" target="_blank"><i class="fa-brands fa-youtube"></i> Youtube</a>
+                                </li>
+                                <li class="p-1">
+                                    <a class="text-light" href="https://github.com/harsh21082004" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+                                </li>
+                                <li class="p-1">
+                                    <a class="text-light" href="https://www.instagram.com/harshtiwari2108/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                                </li>
+                                <li class="p-1">
+                                    <a class="text-light" href="https://www.linkedin.com/in/harsh-tiwari-745a85274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                </section>
+                <!-- Section: Links -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+                <div class="heart my-1 text-black">
+                    <b>Made with <i class="heart-shape fa-solid fa-heart"></i> by Harsh Tiwari,Dhruv Jain,Dhruv Chittodia,Gayatri Bharti</b>
+                </div>
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="https://github.com/" target="_blank">Github.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+        <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-pzjw8YQ63lEXKX9KOVDDjfiu5Z9zTD+Wg5uS+Uz4SjFIvYsxMyhRM6L6F7iBC94+"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-cb79rlzUSf3eb6Dx6Ai5NTA/cNKOI6p8CTx0w+8EIRfQqk71L0aP2NMIJ25VFFts"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
